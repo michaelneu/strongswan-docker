@@ -8,7 +8,7 @@ This isn't a production grade VPN system, use it at your own discretion. I mostl
 
 ## Usage
 
-After building this container (e.g. tagging it as `vpn`), run it as follows:
+After pulling this container, run it as follows:
 
 ```bash
 $ mkdir -p certs
@@ -26,7 +26,7 @@ $ docker run \
   -v `pwd`/certs/cacerts:/etc/ipsec.d/cacerts \
   -v `pwd`/certs/certs:/etc/ipsec.d/certs \
   -v `pwd`/certs/private:/etc/ipsec.d/private \
-  vpn
+  michaelneu/strongswan
 ```
 
 These variables are required to be passed to the container in order to setup strongSwan:
@@ -43,7 +43,7 @@ You may also use this container in a docker-compose setup:
 version: "3"
 services:
   vpn:
-    image: vpn
+    image: michaelneu/strongswan
     cap_add:
       - NET_ADMIN
     ports:
