@@ -31,7 +31,7 @@ if [[ $SERVER_ADDRESS_OR_DOMAIN =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,
   echo "-> ip address provided"
 else
   echo "-> prefixing domain with @ symbol"
-  $SERVER_ADDRESS_OR_DOMAIN="@$SERVER_ADDRESS_OR_DOMAIN"
+  SERVER_ADDRESS_OR_DOMAIN="@$SERVER_ADDRESS_OR_DOMAIN"
 fi
 
 cat << EOF > /etc/ipsec.conf
