@@ -4,7 +4,7 @@ This project aims to provide you with an easily deployable IKEv2 VPN from Docker
 
 ## WARNING
 
-This isn't a production grade VPN system, use it at your own discretion. I mostly created this trying to containerise strongSwan and having a quickly deployable VPN container.
+This isn't a production grade VPN system, use it at your own discretion. I mostly created this trying to containerise strongSwan and to have a quickly deployable VPN container.
 
 ## Usage
 
@@ -50,7 +50,7 @@ services:
       - 500:500/udp
       - 4500:4500/udp
     environment:
-      - CA_NAME="Your CA Name"
+      - CA_NAME=Your CA Name
       - CA_CERT_DAYS=3650
       - SERVER_ADDRESS_OR_DOMAIN=vpn.your-domain.com
       - SECRET_USERNAME=vpn
