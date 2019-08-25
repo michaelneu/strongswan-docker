@@ -37,6 +37,36 @@ These variables are required to be passed to the container in order to setup str
 - `SECRET_USERNAME` is the username for your VPN
 - `SECRET_PASSWORD` is the password for the above user
 
+You may also use this container in a docker-compose setup:
+
+```yaml
+version: "3"
+services:
+  vpn:
+    image: vpn
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 500:500/udp
+      - 4500:4500/udp
+    environment:
+      - CA_NAME="Your CA Name"
+      - CA_CERT_DAYS=3650
+      - SERVER_ADDRESS_OR_DOMAIN=vpn.your-domain.com
+      - SECRET_USERNAME=vpn
+      - SECRET_PASSWORD="this should be a good password"
+    volumes:
+      - ./certs/cacerts:/etc/ipsec.d/cacerts
+      - ./certs/certs:/etc/ipsec.d/certs
+      - ./certs/private:/etc/ipsec.d/private
+```
+
+Additionally, you should allow traffic for port 500 and 4500 through your machine's firewall:
+
+```bash
+$ ufw allow 500,4500/udp
+```
+
 ## License
 
 This project is licensed under the [MIT license](LICENSE).
