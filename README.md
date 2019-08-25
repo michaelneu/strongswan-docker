@@ -13,6 +13,9 @@ After building this container (e.g. tagging it as `vpn`), run it as follows:
 ```bash
 $ mkdir -p certs
 $ docker run \
+  --rm \
+  -it \
+  --cap-add=NET_ADMIN \
   -p 500:500/udp \
   -p 4500:4500/udp \
   -e CA_NAME="Your CA Name" \
