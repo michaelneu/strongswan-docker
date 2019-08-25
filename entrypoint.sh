@@ -103,14 +103,8 @@ echo "-> restarting firewall"
 ufw disable
 ufw enable
 
-echo "starting strongswan"
-systemctl start strongswan
-
 echo "setup done, install this ca certificate on your device:"
 cat /etc/ipsec.d/cacerts/ca-cert.pem
 
-# prevent the container from exiting after the script finishes
-# see https://stackoverflow.com/a/41655546/2058898
-while true; do
-  sleep 2073600
-done
+# start strongswan
+exec /usr/sbin/ipsec start --nofork
