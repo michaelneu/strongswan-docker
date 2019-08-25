@@ -54,7 +54,7 @@ services:
       - CA_CERT_DAYS=3650
       - SERVER_ADDRESS_OR_DOMAIN=vpn.your-domain.com
       - SECRET_USERNAME=vpn
-      - SECRET_PASSWORD="this should be a good password"
+      - SECRET_PASSWORD=this should be a good password
     volumes:
       - ./certs/cacerts:/etc/ipsec.d/cacerts
       - ./certs/certs:/etc/ipsec.d/certs
