@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -x "/etc/ipsec.d/key.pem" ]]; then
+if [[ -f "/etc/ipsec.d/key.pem" ]]; then
   echo "generating keys and certificates"
 
   echo "-> ca key"
