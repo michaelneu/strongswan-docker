@@ -67,9 +67,19 @@ Additionally, you should allow traffic for port 500 and 4500 through your machin
 $ ufw allow 500,4500/udp
 ```
 
-## Connecting from Windows
+## Connecting to the VPN
+
+To connect to the VPN, you need to install the CA certificate that the server will output. Store it in either `ca-cert.pem` (macOS) or `ca-cert.der` (Windows) and install it to your certificate store. On Windows, make sure to install it to the "Trusted Root Certificate Authorities" store, whereas on macOS you need to trust the cert for IPSec.
+
+### Connecting from macOS
+
+Head to the network settings and add a VPN network, choose IKEv2 and enter your credentials (i.e. the remote ID and server address you configured and your user/password under Authentication).
+
+### Connecting from Windows
 
 Apparently, Windows uses a weak [Diffie-Hellman group](https://serverfault.com/a/965275). Using `regedit.exe`, you can create a new key `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters\NegotiateDH2048_AES256` with DWORD 1.
+
+Once the stronger DH group is enabled, add a new VPN via the network settings (not control panel). Use Windows Built-In and IKEv2 and enter your credentials. To get your traffic routed through the VPN, you need to head over to the network adapter settings in the control panel and disable IPv6 in the Networking tab, and tick the "Use default gateway on remote network" checkbox under IPv4 properties/Advanced.
 
 ## License
 
