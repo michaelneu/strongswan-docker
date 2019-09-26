@@ -67,6 +67,10 @@ Additionally, you should allow traffic for port 500 and 4500 through your machin
 $ ufw allow 500,4500/udp
 ```
 
+## Connecting from Windows
+
+Apparently, Windows uses a weak [Diffie-Hellman group](https://serverfault.com/a/965275). Using `regedit.exe`, you can create a new key `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters\NegotiateDH2048_AES256` with DWORD 1.
+
 ## License
 
 This project is licensed under the [MIT license](LICENSE).
