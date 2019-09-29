@@ -23,6 +23,7 @@ $ docker run \
   -e SERVER_ADDRESS_OR_DOMAIN=vpn.your-domain.com \
   -e SECRET_USERNAME=vpn \
   -e SECRET_PASSWORD="this should be a good password" \
+  -e DNS_ADDRESS=1.1.1.1,1.0.0.1
   -v `pwd`/certs/cacerts:/etc/ipsec.d/cacerts \
   -v `pwd`/certs/certs:/etc/ipsec.d/certs \
   -v `pwd`/certs/private:/etc/ipsec.d/private \
@@ -36,6 +37,7 @@ These variables are required to be passed to the container in order to setup str
 - `SERVER_ADDRESS_OR_DOMAIN` is either the IPv4 or the domain of your server
 - `SECRET_USERNAME` is the username for your VPN
 - `SECRET_PASSWORD` is the password for the above user
+- `DNS_ADDRESS` is the DNS server you want to use
 
 You may also use this container in a docker-compose setup:
 
@@ -55,6 +57,7 @@ services:
       - SERVER_ADDRESS_OR_DOMAIN=vpn.your-domain.com
       - SECRET_USERNAME=vpn
       - SECRET_PASSWORD=this should be a good password
+      - DNS_ADDRESS=1.1.1.1,1.0.0.1
     volumes:
       - ./certs/cacerts:/etc/ipsec.d/cacerts
       - ./certs/certs:/etc/ipsec.d/certs

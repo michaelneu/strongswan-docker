@@ -54,7 +54,7 @@ conn ikev2-vpn
     rightid=%any
     rightauth=eap-mschapv2
     rightsourceip=10.10.10.0/24
-    rightdns=1.1.1.1,1.0.0.1
+    rightdns=$DNS_ADDRESS
     rightsendcert=never
     eap_identity=%identity
 EOF
