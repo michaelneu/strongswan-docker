@@ -16,6 +16,7 @@ $ docker run \
   --rm \
   -it \
   --cap-add=NET_ADMIN \
+  --privileged \
   -p 500:500/udp \
   -p 4500:4500/udp \
   -e CA_NAME="Your CA Name" \
@@ -48,6 +49,7 @@ services:
     image: michaelneu/strongswan
     cap_add:
       - NET_ADMIN
+    privileged: true
     ports:
       - 500:500/udp
       - 4500:4500/udp
